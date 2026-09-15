@@ -358,16 +358,16 @@ check_all_namespaces_pods_not_normal()
     echo >> $OUTPUT
 
     echo "# Current Pod's Event. Everything Different from Normal" >> $OUTPUT
-    echo "Command ....: $OMC events pods $pod -n $namespace | grep -v \" Normal \"" >> $OUTPUT
+    echo "Command ....: $OMC events pods $pod -n $namespace | grep $pod | grep -v \" Normal \"" >> $OUTPUT
     echo "-----" >> $OUTPUT
-    $OMC events pods $pod -n $namespace | grep -v " Normal "  >> $OUTPUT
+    $OMC events pods $pod -n $namespace | grep $pod | grep -v " Normal "  >> $OUTPUT
     echo "-----" >> $OUTPUT
     echo >> $OUTPUT
 
     echo "# Current Pod's Event" >> $OUTPUT
-    echo "Command ....: $OMC events pods $pod -n $namespace" >> $OUTPUT
+    echo "Command ....: $OMC events -n $namespace | grep $pod" >> $OUTPUT
     echo "-----" >> $OUTPUT
-    $OMC events pods $pod -n $namespace  >> $OUTPUT
+    $OMC events -n $namespace | grep $pod >> $OUTPUT
     echo "-----" >> $OUTPUT
     echo >> $OUTPUT
 
